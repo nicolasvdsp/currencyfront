@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+nav {
+    padding: 2rem;
+}
+
+nav .nav__item {
+    color: $red;
+    font-size: $body;
+    &:not(:last-of-type) {
+        margin-right: 1rem;
+    }
+}
