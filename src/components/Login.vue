@@ -27,7 +27,7 @@
                 });
                 const json = await response.json();
                 console.log(json);
-                //if json status is success then redirect to login page
+           
                 if(json.status == "success") {
                     window.location.href = '#/transactions';
                 }
