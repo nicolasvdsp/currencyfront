@@ -3,6 +3,8 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Home from './components/Home.vue'
 import Transactions from './components/Transactions.vue'
+import Login from './components/Login.vue'
+import Signup from './components/Signup.vue'
 
 // Check out https://vuejs.org/api/composition-api-setup.html
 import { ref, computed, onMounted } from 'vue'
@@ -10,7 +12,9 @@ import { ref, computed, onMounted } from 'vue'
 // We create just an object
 const routes = {
   '/': Home,
-  '/transactions': Transactions
+  '/transactions': Transactions,
+  '/login' : Login,
+  '/signup': Signup
 };
 
 // get the hash from the url, e.g. /#/todo 
@@ -41,7 +45,8 @@ onMounted( () => {
 <nav>
   <a class="nav__item" href="#/home">Home</a>
   <a class="nav__item" href="#/transactions">Transactions</a>
-  <a class="nav__item">Broken Link</a>
+  <a class="nav__item" href="#/login">Login</a>
+    <a class="nav__item" href="#/signup">Sign up</a>
 </nav>
   <component :is="currentView" />
 </template>
