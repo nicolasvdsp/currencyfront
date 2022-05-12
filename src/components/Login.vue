@@ -26,9 +26,15 @@
                     body: JSON.stringify(data)
                 });
                 const json = await response.json();
-                console.log(json);
+           
            
                 if(json.status == "success") {
+            
+
+                    // document.cookie = `token=${json.data.token};expires=${json.data.expires}`;
+                    var expires = (new Date(Date.now()+ 86400*1000)).toUTCString();
+                    document.cookie = `token=${json.data.token}; expires=` + expires + ";path=/;"
+                   
                     window.location.href = '#/transactions';
                 }
                
