@@ -43,7 +43,9 @@
 
 <template>
   <div class="notch"></div>
-  <component :is="currentView" />
+  <div class="views">
+    <component :is="currentView" />
+  </div>
   <Navigation/>
 </template>
 

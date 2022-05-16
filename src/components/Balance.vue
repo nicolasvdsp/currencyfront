@@ -1,13 +1,38 @@
 <script setup>
-    import { ref } from 'vue'
-    const title = "Balance";
+    import { ref, onMounted } from 'vue'
+    const title = "camelCoin";
+    const balance = 48;
+    let myTransactions = ref([]);
+
+    onMounted(() => {
+        fetch('http://localhost:3001/transactions')
+            .then(res=> res.json())
+            .then(data => {
+                myTransactions.value = data.data.transactions;
+            })
+    })
+
 
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
-</template>
+  <h2>{{ title }}</h2>
 
-<style scoped>
+  <div class="balance">
+        <h3>currentBalance</h3>
+        <p class="balance__amount">{{ balance }}<span class="balance__amount__symbol">cC</span></p>
+  </div>
+
+  <div class="transactions">
+      <h3 class="transactions__title">recentTransactions</h3>
+      <div class="transactions__item" v-for="(t, index) in myTransactions" :key="index">
+            <p class="transactions__item__name">{{ t.sender }}</p>
+            <span class="transactions__item__date">{{ t.date }}</span>
+            <span class="transactions__item__amount transactions__item__amount--out">{{ t.amount }}<span> cC</span></span>
+      </div>
+  </div>
+</template> 
+
+<style scoped> 
 
 </style>
