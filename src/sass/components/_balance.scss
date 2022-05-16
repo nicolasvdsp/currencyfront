@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+
+.balance {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.balance__amount {
+    font-family: "Right Grotesk Wide Medium", sans-serif;
+    font-size: 5rem;
+}
+.balance__amount__symbol {
+    font-size: 2rem;
+    margin-left: 0.5rem;
+}

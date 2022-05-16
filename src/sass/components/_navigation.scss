@@ -3,7 +3,7 @@
 nav {
     padding: 1.5rem 1rem 0rem;
     background-color: $sunny;
-    position: fixed;
+    position: sticky;
     bottom: 0px;
     width: 100%;
     height: 96px;
@@ -27,14 +27,14 @@ nav {
 .nav__item__icon {
     width: 1.5rem;
     height: 1.5rem;
-    background-image: url(../../../public/icon_leaderboard.svg);
+    background-image: url(../../../public/assets/icons/icon_leaderboard.svg);
     margin-bottom: 0.5rem;
 }
 .icon--balance {
-    background-image: url(../../../public/icon_balance.svg);
+    background-image: url(../../../public/assets/icons/icon_balance.svg);
 
 }
 .icon--transaction {
-    background-image: url(../../../public/icon_transaction.svg);
+    background-image: url(../../../public/assets/icons/icon_transaction.svg);
 
 }
