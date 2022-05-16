@@ -1,8 +1,12 @@
 <script setup>
-    import { ref, onMounted } from 'vue'
+    import { ref, onMounted } from 'vue';
+    import moment from 'moment';
+
     const title = "camelCoin";
     const balance = 48;
     let myTransactions = ref([]);
+
+
 
     onMounted(() => {
         fetch('http://localhost:3001/transactions')
@@ -11,6 +15,8 @@
                 myTransactions.value = data.data.transactions;
             })
     })
+
+    // console.log(moment());
 
 
 </script>
@@ -27,7 +33,7 @@
       <h3 class="transactions__title">recentTransactions</h3>
       <div class="transactions__item" v-for="(t, index) in myTransactions" :key="index">
             <p class="transactions__item__name">{{ t.sender }}</p>
-            <span class="transactions__item__date">{{ t.date }}</span>
+            <span class="transactions__item__date">{{ moment(t.date).format('ll') }}</span>
             <span class="transactions__item__amount transactions__item__amount--out">{{ t.amount }}<span> cC</span></span>
       </div>
   </div>
