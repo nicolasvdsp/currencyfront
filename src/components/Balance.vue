@@ -15,11 +15,17 @@
                 myTransactions.value = data.data.transactions.splice(0, 6);
             })
     })
+    function logout(e) {
+        e.preventDefault();
+        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.href = '/';
+    }
     
 </script>
 
 <template>
   <h2>{{ title }}</h2>
+  <a href="#" v-on:click="logout">logout</a>
 
   <div class="balance">
         <h3>currentBalance</h3>
