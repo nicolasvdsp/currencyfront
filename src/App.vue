@@ -5,6 +5,7 @@
   import Transactions from './components/Transactions.vue'
   import Balance from './components/Balance.vue'
   import Leaderboard from './components/Leaderboard.vue'
+  import TransactionNew from './components/TransactionNew.vue'
 
   // Check out https://vuejs.org/api/composition-api-setup.html
   import { ref, computed, onMounted } from 'vue'
@@ -14,7 +15,8 @@
   const routes = {
     '/leaderboard': Leaderboard,
     '/': Balance,
-    '/transactions': Transactions
+    '/transactions': Transactions,
+    '/new-transaction': TransactionNew
   };
 
   // get the hash from the url, e.g. /#/todo 

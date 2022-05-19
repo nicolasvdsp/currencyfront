@@ -1,0 +1,17 @@
+@use '../abstracts' as *;
+
+.btn--sticky {
+    position: sticky;
+    // display: inline-block;
+    margin-left: auto;
+    margin-right: 0;
+    width: 3rem;
+    height: 3rem;
+    background-color: $raisin;
+    border-radius: 50px;
+    text-align: center;
+    color: $snow;
+    font-size: 2rem;
+
+    @include flex-hc_vc;
+}

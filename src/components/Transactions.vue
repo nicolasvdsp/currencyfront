@@ -22,6 +22,7 @@
 
 <template>
     <h2>{{ title }}</h2>
+    <a href="#/new-transaction" class="btn--sticky">+</a>
 
     <div class="transactions">
       <div class="transactions__item" v-for="(t, index) in transactions" :key="index">
@@ -34,6 +35,7 @@
             <span v-else class="transactions__item__amount transactions__item__amount--in">{{ t.amount }}<span> cC</span></span>
       </div>
   </div>
+
 </template>
 
 <style scoped>
