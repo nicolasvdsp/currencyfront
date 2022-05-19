@@ -3,9 +3,10 @@
 
     const title = "newTransaction";
 
+    let token = ref(document.cookie);
     let sender = 'Nicolas' //comes from token
-    let receiver = ref('');
-    let amount = ref('');
+    let receiver = ref('ijsbeer');
+    let amount = ref(Math.floor(Math.random()*10));
 
     onMounted(() => {
         
@@ -20,7 +21,8 @@
             body: JSON.stringify({
                 sender: sender,
                 receiver: receiver.value,
-                amount: amount.value
+                amount: amount.value,
+                token: token.value
             })
         })
 
