@@ -1,0 +1,26 @@
+@use '../abstracts' as *;
+
+.leaderboard {
+    font-family: "Right Grotesk Medium";
+    font-size: 1.25rem;
+    margin-top: 3rem;
+    height: 100vh;
+}
+
+.leaderboard__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    &:nth-of-type(2) {
+        * {
+            color: $sunny;
+        }
+    }
+}
+
+.leaderboard__item__ranking {
+    margin-right: 1rem;
+    display: inline-block;
+    width: 1.5rem;
+}
