@@ -12,13 +12,10 @@
         fetch('http://localhost:3001/transactions')
             .then(res=> res.json())
             .then(data => {
-                myTransactions.value = data.data.transactions;
+                myTransactions.value = data.data.transactions.splice(0, 6);
             })
     })
-
-    // console.log(moment());
-
-
+    
 </script>
 
 <template>
