@@ -9,11 +9,14 @@
     import Login from './components/Login.vue'
     import Signup from './components/Signup.vue'
     import NotFound from './components/NotFound.vue'
+    import Methods from './Methods.js'
+
 
     // Check out https://vuejs.org/api/composition-api-setup.html
     import { ref, computed, onMounted } from 'vue'
     import Navigation from './components/Navigation.vue';
 
+    let m = new Methods();
     // We create just an object
     const routes = {
         '/leaderboard': Leaderboard,
@@ -41,49 +44,13 @@
             currentPath.value = window.location.hash;
             // console.log(currentPath.value + " is the current path");
             // console.log(currentView);
-            redirectOnLoginStatus(cookie);
+            m.redirectOnLoginStatus(cookie, currentPath.value);
         })
 
-        redirectOnLoginStatus(cookie);
+        m.redirectOnLoginStatus(cookie, currentPath.value);
 
     });
 
-    function redirectOnLoginStatus(cookie) {
-        if(currentPath.value != "#/login" || currentPath.value != "#/signup") {
-            let cookie = getCookie("token");
-            if(cookie == null) {
-                window.location.href = '#/login';
-            }
-        } 
-
-        if(currentPath.value === "#/login" || currentPath.value === "#/signup"){
-            let cookie = getCookie("token");
-            if(cookie != null) {
-                window.location.href = '#/transactions';
-            }
-        }
-    }
-
-    function getCookie(name) {
-    var dc = document.cookie;
-    var prefix = name + "=";
-    var begin = dc.indexOf("; " + prefix);
-    if (begin == -1) {
-        begin = dc.indexOf(prefix);
-        if (begin != 0) return null;
-    }
-    else
-    {
-        begin += 2;
-        var end = document.cookie.indexOf(";", begin);
-        if (end == -1) {
-        end = dc.length;
-        }
-    }
-    // because unescape has been deprecated, replaced with decodeURI
-    //return unescape(dc.substring(begin + prefix.length, end));
-    return decodeURI(dc.substring(begin + prefix.length, end));
-} 
 
 </script>
 
