@@ -37,5 +37,23 @@ export default class Methods {
     return decodeURI(dc.substring(begin + prefix.length, end));
     } 
 
+    getUserByToken(token) {
+        let username;
+        console.log(username);
+        fetch('http://localhost:3001/users/getUserByToken', {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                token: token
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            return username = data.data.user.username;
+            // console.log(username);
+        })
+    }
 
 }

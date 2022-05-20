@@ -2,21 +2,44 @@
     import { ref, onMounted } from 'vue'
     import moment from 'moment';
     import 'moment/dist/locale/en-ie';
+    import Methods from '../../src/Methods'
+
+    let m = new Methods();
 
     moment.locale('en-ie');
 
     const title = "allTransactions";
     let transactions = ref([1,2]);
 
-    const currentUser = 'Nicolas';
+    const currentUser = ref(['Nicolas']);
 
     onMounted(() => {
-        fetch('http://localhost:3001/transactions')
+        fetch('http://localhost:3001/transactions/' + document.cookie )
             .then(res => res.json())
             .then(data => {
                 transactions.value = data.data.transactions;
             });
+    
+        // let user = m.getUserByToken(document.cookie);
+
+        fetch('http://localhost:3001/users/getUserByToken', 
+            {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    token: document.cookie
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data.data.user.username);
+                currentUser.value = data.data.user.username;
+            });
+
     });
+
 
 </script>
 

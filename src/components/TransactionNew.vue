@@ -3,13 +3,29 @@
 
     const title = "newTransaction";
 
+    const currentUser = ref([""]);
+
     let token = ref(document.cookie);
     let sender = 'Nicolas' //comes from token
     let receiver = ref('ijsbeer');
     let amount = ref(Math.floor(Math.random()*10));
 
     onMounted(() => {
-        
+        fetch('http://localhost:3001/users/getUserByToken', 
+            {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    token: document.cookie
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data.data.user.username);
+                currentUser.value = data.data.user.username;
+            });
     })
     
     function onSubmit(e) {
@@ -19,12 +35,18 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                sender: sender,
+                sender: currentUser,
                 receiver: receiver.value,
                 amount: amount.value,
                 token: token.value
             })
         })
+        .then( res => res.json())
+        // .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+
 
         console.log(`${receiver.value} received ${amount.value} camelCoins`);
         receiver.value = '';
