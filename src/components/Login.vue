@@ -35,7 +35,7 @@
                     var expires = (new Date(Date.now()+ 86400*1000)).toUTCString();
                     document.cookie = `token=${json.data.token}; expires=` + expires + ";path=/;"
                    
-                    window.location.href = '#/transactions';
+                    window.location.href = '/';
                 }
                
             }
