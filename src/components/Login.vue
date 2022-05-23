@@ -1,4 +1,5 @@
 <template>
+<span class="error-message-login"></span>
    <form @submit.prevent="submit">
          <h1>Login</h1>
             <input v-model="data.username" placeholder="Username" required>
@@ -36,6 +37,13 @@
                     document.cookie = `token=${json.data.token}; expires=` + expires + ";path=/;"
                    
                     window.location.href = '/';
+                }
+                //console log errors
+                else {
+                    //get query selector
+                    const errorMessage = document.querySelector('.error-message-login');
+                    errorMessage.innerHTML = json.message;
+
                 }
                
             }
