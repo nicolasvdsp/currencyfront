@@ -3,17 +3,29 @@
     import moment from 'moment';
 
     const title = "camelCoin";
-    const balance = 48;
-    let myTransactions = ref([]);
+    const balance = ref();
+    let transactions = ref([]);
 
-    const currentUser = ref(['Nicolas']);
+    const currentUser = ref({
+        username: "",
+        balance: 0
+    });
 
     onMounted(() => {
-        fetch('http://localhost:3001/transactions/' + document.cookie)
-            .then(res=> res.json())
-            .then(data => {
-                myTransactions.value = data.data.transactions.splice(0, 6);
+        fetch('http://localhost:3001/transactions/getAll',
+            {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    token: document.cookie
+                })
             })
+            .then(res => res.json())
+            .then(data => {
+                transactions.value = data.data.transactions;
+            });
 
         fetch('http://localhost:3001/users/getUserByToken', 
             {
@@ -27,8 +39,9 @@
             })
             .then(res => res.json())
             .then(data => {
-                // console.log(data.data.user.username);
-                currentUser.value = data.data.user.username;
+                console.log(data.data);
+                currentUser.value = data.data.user;
+                balance.value = data.data.balance
             });
     })
     function logout(e) {
@@ -51,7 +64,7 @@
 
   <div class="transactions">
       <h3 class="transactions__title">recentTransactions</h3>
-      <div class="transactions__item" v-for="(t, index) in myTransactions" :key="index">
+      <div class="transactions__item" v-for="(t, index) in transactions" :key="index">
             <p v-if="t.sender === currentUser" class="transactions__item__name">{{ t.receiver }}</p>
             <p v-else class="transactions__item__name">{{ t.sender }}</p>
 

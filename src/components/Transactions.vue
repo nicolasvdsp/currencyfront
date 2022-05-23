@@ -14,7 +14,16 @@
     const currentUser = ref(['Nicolas']);
 
     onMounted(() => {
-        fetch('http://localhost:3001/transactions/' + document.cookie )
+        fetch('http://localhost:3001/transactions/getAll',
+            {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    token: document.cookie
+                })
+            })
             .then(res => res.json())
             .then(data => {
                 transactions.value = data.data.transactions;
@@ -34,8 +43,8 @@
             })
             .then(res => res.json())
             .then(data => {
-                // console.log(data.data.user.username);
-                currentUser.value = data.data.user.username;
+                console.log(data.data);
+                currentUser.value = data.data.user;
             });
 
     });

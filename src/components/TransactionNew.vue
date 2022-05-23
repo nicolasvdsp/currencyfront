@@ -6,9 +6,8 @@
     const currentUser = ref([""]);
 
     let token = ref(document.cookie);
-    let sender = 'Nicolas' //comes from token
-    let receiver = ref('ijsbeer');
-    let amount = ref(Math.floor(Math.random()*10));
+    let receiver = ref('');
+    let amount = ref();
 
     onMounted(() => {
         fetch('http://localhost:3001/users/getUserByToken', 
