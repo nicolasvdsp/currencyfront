@@ -1,11 +1,13 @@
 <template>
-<span class="error-message-login"></span>
-    <form @submit.prevent="submit">
+
+    <form @submit.prevent="submit" class="form-login">
         <h1>Sign up</h1>
-        <input v-model="data.username" placeholder="Username" required>
-        <input v-model="data.email" type="email" placeholder="Email" required>
-        <input v-model="data.password" type="password" placeholder="password" required>
-        <input type="submit" placeholder="Submit">
+        <span class="error-message-login"></span>
+        <input class="form__input__text" v-model="data.username" placeholder="Username" required>
+        <input class="form__input__text" v-model="data.email" type="email" placeholder="Email" required>
+        <input class="form__input__text" v-model="data.password" type="password" placeholder="Password" required>
+        <input class="form__input__button" type="submit" value="Sign up">
+        <span class="form__switch">Already an user? <a href="#/login">Login</a></span>
     </form>
 </template>
 
