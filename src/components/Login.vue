@@ -1,11 +1,15 @@
 <template>
-<span class="error-message-login"></span>
-   <form @submit.prevent="submit">
+
+   <form @submit.prevent="submit" class="form-login">
          <h1>Login</h1>
-            <input v-model="data.username" placeholder="Username" required>
-            <input v-model="data.password" type="password" placeholder="password" required>
-            <input type="submit" placeholder="Login">
+         <span class="error-message-login"></span>
+            <input class="form__input__text" v-model="data.username" placeholder="Username" required>
+            <input class="form__input__text" v-model="data.password" type="password" placeholder="Password" required>
+            <input class="form__input__button" type="submit" value="Login">
+            <span class="form__switch">No account yet? <a href="#/signup">Signup</a></span>
    </form>
+
+   
 </template>
 
 <script>
@@ -42,8 +46,9 @@
                 else {
                     //get query selector
                     const errorMessage = document.querySelector('.error-message-login');
+                    errorMessage.style.display = "block";
                     errorMessage.innerHTML = json.message;
-
+                
                 }
                
             }
