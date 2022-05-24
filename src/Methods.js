@@ -1,7 +1,7 @@
 export default class Methods {
 
     redirectOnLoginStatus(cookie, currentPath) {
-        if(currentPath != "#/login" || currentPath != "#/signup") {
+        if(currentPath != "#/login" && currentPath != "#/signup") {
             cookie = this.getCookie("token");
             if(cookie == null) {
                 window.location.href = '#/login';
