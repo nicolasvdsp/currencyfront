@@ -1,12 +1,17 @@
 @use '../abstracts' as *;
 .error-message-login{
-    color: $snow;
-    
-    margin-top: 1em;
-    background-color: $fatal;
-    padding: 5px 50px;
-    border-radius: 15px;
+    font-family: "Right Grotesk Wide Medium", sans-serif;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: $red;
+    color: $white;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding-top: 4px;
+    padding-bottom: 8px;
     display: none;
+ 
 }
 .form-login{
     @include flex-hc_vc;
@@ -41,7 +46,5 @@
     cursor: pointer;
 }
 .form__switch{
-
-   
     margin-top: 1rem;
 }

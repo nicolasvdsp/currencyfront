@@ -43,7 +43,9 @@ import {reactive} from 'vue';
                 else {
                     //get query selector
                     const errorMessage = document.querySelector('.error-message-login');
+                    errorMessage.style.display = "block";
                     errorMessage.innerHTML = json.message;
+
                 }
              
                 
