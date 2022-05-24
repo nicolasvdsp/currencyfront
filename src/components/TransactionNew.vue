@@ -8,8 +8,18 @@
     let token = ref(document.cookie);
     let receiver = ref('');
     let amount = ref();
-
+   function check_cookie_name(name) 
+    {
+      var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      if (match) {
+        return match[2];
+      }
+      else{
+           console.log('something went wrong');
+      }
+    }
     onMounted(() => {
+          let cookie = "token="+check_cookie_name('token');
         fetch('http://localhost:3001/users/getUserByToken', 
             {
                 method: "POST",
@@ -17,7 +27,7 @@
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify({
-                    token: document.cookie
+                    token: cookie
                 })
             })
             .then(res => res.json())
@@ -25,9 +35,11 @@
                 // console.log(data.data.user.username);
                 currentUser.value = data.data.user.username;
             });
+          
     })
     
     function onSubmit(e) {
+        let cookie = "token="+check_cookie_name('token');
         fetch('http://localhost:3001/transactions', {
             method: "POST",
             headers: {
@@ -37,7 +49,7 @@
                 sender: currentUser,
                 receiver: receiver.value,
                 amount: amount.value,
-                token: token.value
+                token: cookie
             })
         })
         .then( res => res.json())
