@@ -70,14 +70,14 @@
 
     <form @submit.prevent="onSubmit" class="add-form">
         <div class="form-control">
-            <label>receiver</label>
-            <input type="text" v-model="receiver" name="receiver" placeholder="username" />
+            <!-- <label class="form__label">receiver</label> -->
+            <input  class="form__input__text" type="text" v-model="receiver" name="receiver" placeholder="Receiver" />
         </div>
         <div class="form-control">
-            <label>amount</label>
-            <input type="text" v-model="amount" name="amount" placeholder="how many camerlCoins?"/>
+            <!-- <label class="form__label">amount</label> -->
+            <input  class="form__input__text" type="text" v-model="amount" name="amount" placeholder="Amount 0"/>
         </div>
-    <input type="submit" value="Save Information" class="btn btn-block" />
+    <input type="submit" value="Save Information" class="btn btn-block form__input__button" />
   </form>
 
 

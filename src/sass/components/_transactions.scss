@@ -49,10 +49,10 @@
     align-self: end;
     justify-self: end;
     &--in {
-        color: $fatal;
+        color: $success;
     }
     &--out {
-        color: $success
+        color: $fatal;
     }
     span {
         font-size: 1rem;
