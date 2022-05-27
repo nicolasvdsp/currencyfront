@@ -40,7 +40,7 @@ export default class Methods {
     getUserByToken(token) {
         let username;
         console.log(username);
-        fetch('http://localhost:3001/users/getUserByToken', {
+        fetch('https://imdcurrencyapp.herokuapp.com/users/getUserByToken', {
             method: "POST",
             headers: {
                 "Content-type": "application/json"

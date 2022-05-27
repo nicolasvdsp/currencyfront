@@ -25,7 +25,7 @@ import {reactive} from 'vue';
          
             const submit = async () => {
                 
-                const response = await fetch('http://localhost:3001/users/signup', {
+                const response = await fetch('https://imdcurrencyapp.herokuapp.com/users/signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

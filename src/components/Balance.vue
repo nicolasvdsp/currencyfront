@@ -22,7 +22,7 @@
    }
     onMounted(() => {
         let cookie = "token="+check_cookie_name('token');
-        fetch('http://localhost:3001/transactions/getAll',
+        fetch('https://imdcurrencyapp.herokuapp.com/transactions/getAll',
             {
                 method: "POST",
                 headers: {
@@ -37,7 +37,7 @@
                 transactions.value = data.data.transactions;
             });
 
-        fetch('http://localhost:3001/users/getUserByToken', 
+        fetch('https://imdcurrencyapp.herokuapp.com/users/getUserByToken', 
             {
                 method: "POST",
                 headers: {
@@ -49,7 +49,7 @@
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data.data);
+                // console.log(data.data);
                 currentUser.value = data.data.user;
                 balance.value = data.data.balance
             });

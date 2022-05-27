@@ -20,7 +20,7 @@
     }
     onMounted(() => {
           let cookie = "token="+check_cookie_name('token');
-        fetch('http://localhost:3001/users/getUserByToken', 
+        fetch('https://imdcurrencyapp.herokuapp.com/users/getUserByToken', 
             {
                 method: "POST",
                 headers: {
@@ -40,7 +40,7 @@
     
     function onSubmit(e) {
         let cookie = "token="+check_cookie_name('token');
-        fetch('http://localhost:3001/transactions', {
+        fetch('https://imdcurrencyapp.herokuapp.com/transactions', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

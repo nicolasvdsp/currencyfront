@@ -5,7 +5,7 @@
     let allUsers = ref([1,2]);
 
     onMounted(() => {
-        fetch('http://localhost:3001/users/getallbybalance')
+        fetch('https://imdcurrencyapp.herokuapp.com/users/getallbybalance')
             .then(res => res.json())
             .then(data => {
                 allUsers.value = data.data.users;
