@@ -3,11 +3,14 @@
 nav {
     padding: 1.5rem 1rem 0rem;
     background-color: $sunny;
-    position: sticky;
-    bottom: 0px;
-    width: 100%;
+    position: absolute;
+    // left: 50%;
+    // top: 50%;
+    inset: 50% 50%;
+    transform: translate(-50%, calc(-50% + calc(375px - 50px)));
+    width: 371px;
     height: 96px;
-    border-radius: 0 0 50px 50px;
+    border-radius: 0 0 48px 48px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }

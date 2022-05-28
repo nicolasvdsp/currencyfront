@@ -59,8 +59,8 @@
 
 
 <template>
-  <div class="notch"></div>
   <div class="views">
+      <div class="notch"></div>
     <component :is="currentView" />
   </div>
 

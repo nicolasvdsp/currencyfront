@@ -3,7 +3,7 @@
 $corner-size: 6;
 $notch-height: 30px;
 
-#app {
+.views {
     position: absolute;
     width: 375px;
     height: 750px;
@@ -13,6 +13,7 @@ $notch-height: 30px;
     // background-color: rebeccapurple;
     border: 2px black solid;
     border-radius: 50px;
+    padding-bottom: 100px;
     
     // padding-top: $notch-height + 48px;
     overflow: scroll;
