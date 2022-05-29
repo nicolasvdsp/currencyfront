@@ -57,7 +57,7 @@
         .then(data => {
             console.log(data);
             if(data.status === "success") {
-                window.location.href = "/transactions";
+                window.location.href = "/#/transactions";
             }
             else{
                 const errorMessage = document.querySelector('.error-message-login');
