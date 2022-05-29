@@ -56,6 +56,14 @@
         // .then(res => res.json())
         .then(data => {
             console.log(data);
+            if(data.status === "success") {
+                window.location.href = "/transactions";
+            }
+            else{
+                const errorMessage = document.querySelector('.error-message-login');
+                errorMessage.style.display = "block";
+                errorMessage.innerHTML = data.message;
+            }
         })
 
 
@@ -69,6 +77,7 @@
     <h2>{{ title }}</h2>
 
     <form @submit.prevent="onSubmit" class="add-form">
+      <span class="error-message-login" style="text-align: center;"></span>
         <div class="form-control">
             <!-- <label class="form__label">receiver</label> -->
             <input  class="form__input__text" type="text" v-model="receiver" name="receiver" placeholder="Receiver" />
