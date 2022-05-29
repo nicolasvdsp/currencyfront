@@ -37,7 +37,9 @@ import {reactive} from 'vue';
               
                 //if json status is success then redirect to login page
                 if(json.status == "success") {
-                   window.location.href = '#/transactions';
+                   var expires = (new Date(Date.now()+ 86400*1000)).toUTCString();
+                   document.cookie = `token=${json.data.token}; expires=` + expires + ";path=/;"
+                   window.location.href = '/';
                 }
                 //else log errors
                 else {
