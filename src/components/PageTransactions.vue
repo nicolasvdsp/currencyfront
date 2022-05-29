@@ -3,6 +3,7 @@
     import moment from 'moment';
     import 'moment/dist/locale/en-ie';
     import Methods from '../../src/Methods'
+    import Transaction from './Transaction.vue'
 
     let m = new Methods();
 
@@ -11,7 +12,7 @@
     const title = "allTransactions";
     let transactions = ref([1,2]);
 
-    const currentUser = ref(['Nicolas']);
+    const currentUser = ref('Nicolas');
     function check_cookie_name(name) 
     {
       var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -59,7 +60,9 @@
 
     });
 
-
+    function showDetail() {
+        console.log("this");
+    }
 </script>
 
 <template>
@@ -67,6 +70,17 @@
     <a href="#/new-transaction" class="btn--sticky">+</a>
 
     <div class="transactions">
+        <Transaction
+            v-for="(t, index) in transactions" :key="index"
+            :sender='t.sender'
+            :receiver="t.receiver"
+            :date="t.date"
+            :amount="t.amount"
+            :currentUser="currentUser"
+        />
+    </div>
+
+    <!-- <div class="transactions">
       <div class="transactions__item" v-for="(t, index) in transactions" :key="index">
             <p v-if="t.sender === currentUser" class="transactions__item__name">{{ t.receiver }}</p>
             <p v-else class="transactions__item__name">{{ t.sender }}</p>
@@ -76,7 +90,7 @@
             <span v-if="t.sender === currentUser" class="transactions__item__amount transactions__item__amount--out">{{ t.amount }}<span> cC</span></span>
             <span v-else class="transactions__item__amount transactions__item__amount--in">{{ t.amount }}<span> cC</span></span>
       </div>
-  </div>
+  </div> -->
 
 </template>
 

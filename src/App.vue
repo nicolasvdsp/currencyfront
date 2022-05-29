@@ -2,9 +2,9 @@
     // This starter template is using Vue 3 <script setup> SFCs
     // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
     import Home from './components/Home.vue'
-    import Transactions from './components/Transactions.vue'
-    import Balance from './components/Balance.vue'
-    import Leaderboard from './components/Leaderboard.vue'
+    import PageTransactions from './components/PageTransactions.vue'
+    import PageBalance from './components/PageBalance.vue'
+    import PageLeaderboard from './components/PageLeaderboard.vue'
     import TransactionNew from './components/TransactionNew.vue'
     import Login from './components/Login.vue'
     import Signup from './components/Signup.vue'
@@ -19,9 +19,9 @@
     let m = new Methods();
     // We create just an object
     const routes = {
-        '/leaderboard': Leaderboard,
-        '/': Balance,
-        '/transactions': Transactions,
+        '/leaderboard': PageLeaderboard,
+        '/': PageBalance,
+        '/transactions': PageTransactions,
         '/new-transaction': TransactionNew,
         '/login': Login,
         '/signup': Signup
